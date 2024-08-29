@@ -59,7 +59,7 @@ public class MvcController extends LoggerSupport {
             for (int i = 0; i <= 9; i++) {
                 String email = "user" + i + "@example.com";
                 String name = "User-" + i;
-                String password = "password" + i;
+                String password = "123456" ;
                 if (userService.fetchUserProfileByEmail(email) == null) {
                     logger.info("auto create user {} for local dev env...", email);
                     doSignup(email, name, password);
@@ -151,7 +151,7 @@ public class MvcController extends LoggerSupport {
         if (isLocalDevEnv()) {
             logger.warn("auto deposit assets for user {} in local dev env...", profile.email);
             Random random = new Random(profile.userId);
-            deposit(profile.userId, AssetEnum.BTC, new BigDecimal(random.nextInt(3_000000, 80_000000)).movePointLeft(2));
+           // deposit(profile.userId, AssetEnum.BTC, new BigDecimal(random.nextInt(3_000000, 80_000000)).movePointLeft(2));
             deposit(profile.userId, AssetEnum.USD, new BigDecimal(random.nextInt(5_000000, 10_000000)).movePointLeft(2));
         }
         logger.info("user signed up: {}", profile);

@@ -38,13 +38,17 @@ public class OrderService {
         switch (direction) {
         case BUY -> {
             // 买入，需冻结USD：
-            if (!assetService.tryFreeze(userId, AssetEnum.USD, price.multiply(quantity))) {
+            if (!assetService.tryFreeze(userId, AssetEnum.USD, quantity)) {
                 return null;
             }
         }
         case SELL -> {
             // 卖出，需冻结BTC：
-            if (!assetService.tryFreeze(userId, AssetEnum.BTC, quantity)) {
+            /*if (!assetService.tryFreeze(userId, AssetEnum.BTC, quantity)) {
+                return null;
+            }*/
+            // 判断卖出数量小于等于冻结数量
+            if (!assetService.frozenEnough(userId, AssetEnum.USD, quantity)) {
                 return null;
             }
         }

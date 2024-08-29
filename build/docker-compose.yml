@@ -55,4 +55,4 @@ services:
       - MYSQL_ROOT_PASSWORD=123456
     volumes:
       - "./sql/schema.sql:/docker-entrypoint-initdb.d/1-schema.sql:ro"
-      - "./Users/joke/opt/docker/mysql-data:/var/lib/mysql"
+      - "/Users/joke/opt/docker/mysql-data:/var/lib/mysql"

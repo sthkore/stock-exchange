@@ -117,6 +117,18 @@ public class AssetService extends LoggerSupport {
         };
     }
 
+    public boolean frozenEnough(Long userId, AssetEnum assetEnum, BigDecimal quantity) {
+        ConcurrentMap<AssetEnum, Asset> map = userAssets.get(userId);
+        if (map == null) {
+            return false;
+        }
+        Asset userAsset = map.get(assetEnum);
+        if(userAsset.frozenNum.compareTo(quantity) < 0){
+            return false;
+        }
+        return true;
+    }
+
     private Asset initAssets(Long userId, AssetEnum assetId) {
         ConcurrentMap<AssetEnum, Asset> map = userAssets.get(userId);
         if (map == null) {
@@ -143,4 +155,6 @@ public class AssetService extends LoggerSupport {
         }
         System.out.println("---------- // assets ----------");
     }
+
+
 }
