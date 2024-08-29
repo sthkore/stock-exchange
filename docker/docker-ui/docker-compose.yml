@@ -1,0 +1,15 @@
+version: "3"
+services:
+  kafka-ui:
+    image: provectuslabs/kafka-ui:latest
+    container_name: kafka-ui
+    restart: always
+    ports:
+      - 9091:8080
+    volumes:
+      - /Users/joke/opt/kafka-ui/etc/localtime:/etc/localtime
+    environment:
+      # 集群名称
+      - KAFKA_CLUSTERS_0_NAME=local
+      # 集群地址
+      - KAFKA_CLUSTERS_0_BOOTSTRAPSERVERS=kafka:9092
