@@ -264,10 +264,6 @@ function initApp() {
 		el: '#app',
 		data: {
 			assets: {
-				BTC: {
-					available: NaN,
-					frozen: NaN
-				},
 				USD: {
 					available: NaN,
 					frozen: NaN
@@ -331,7 +327,7 @@ function initApp() {
 			// 调用REST API刷新资产:
 			refreshAssets: async function () {
 				try {
-					this.assets = await get('/api/assets');
+					 this.assets = await get('/api/assets');
 				} catch (err) {
 					return showError(err.message || err.error || 'Error');
 				}
@@ -472,11 +468,11 @@ function initApp() {
 								<td class="text-end" v-text="formatNumber(assets.USD.available)"></td>
 								<td class="text-end" v-text="formatNumber(assets.USD.frozen)"></td>
 							</tr>
-							<tr>
+							<!--<tr>
 								<td>BTC</td>
 								<td class="text-end" v-text="formatNumber(assets.BTC.available)"></td>
 								<td class="text-end" v-text="formatNumber(assets.BTC.frozen)"></td>
-							</tr>
+							</tr>-->
 						<tbody>
 					</table>
 				</div>

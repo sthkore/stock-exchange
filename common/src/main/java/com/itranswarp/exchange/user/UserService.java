@@ -72,4 +72,16 @@ public class UserService extends AbstractDbService {
         }
         return userProfile;
     }
+
+    public void deleteByUserId(Long userId) {
+        var user = new UserEntity();
+        user.setId(userId);
+        db.delete(user);
+        var up = new UserProfileEntity();
+        up.setUserId(userId);
+        db.delete(up);
+        var pa = new PasswordAuthEntity();
+        pa.setUserId(userId);
+        db.delete(pa);
+    }
 }

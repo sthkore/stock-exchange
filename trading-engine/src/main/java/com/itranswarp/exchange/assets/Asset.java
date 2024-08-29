@@ -15,7 +15,7 @@ public class Asset {
     /**
      * 可用数量
      */
-    BigDecimal availableNum;
+   // BigDecimal availableNum;
     /**
      * 冻结金额
      */
@@ -24,7 +24,7 @@ public class Asset {
     /**
      * 冻结数量
      */
-    BigDecimal frozenNum;
+   // BigDecimal frozenNum;
 
     public Asset() {
        this(BigDecimal.ZERO, BigDecimal.ZERO, BigDecimal.ZERO, BigDecimal.ZERO);
@@ -33,8 +33,8 @@ public class Asset {
     public Asset(BigDecimal available,BigDecimal availableNum, BigDecimal frozen,BigDecimal frozenNum) {
         this.available = available;
         this.frozen = frozen;
-        this.availableNum=availableNum;
-        this.frozenNum=frozenNum;
+      //  this.availableNum=availableNum;
+       // this.frozenNum=frozenNum;
     }
 
     public BigDecimal getAvailable() {
@@ -45,26 +45,16 @@ public class Asset {
         return frozen;
     }
 
-    public BigDecimal getAvailableNum() {
-        return availableNum;
-    }
 
-    public BigDecimal getFrozenNum() {
-        return frozenNum;
-    }
 
     @JsonIgnore
     public BigDecimal getTotal() {
         return available.add(frozen);
     }
 
-    @JsonIgnore
-    public BigDecimal getTotalNum() {
-        return availableNum.add(frozenNum);
-    }
 
     @Override
     public String toString() {
-        return String.format("[available=%04.2f,availableNum=%04.2f, frozen=%02.2f,frozenNum=%04.2f]", available,availableNum, frozen,frozenNum);
+        return String.format("[available=%04.2f, frozen=%02.2f]", available, frozen);
     }
 }

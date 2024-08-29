@@ -31,6 +31,30 @@ public class UserEntity implements EntitySupport {
     @Column(nullable = false, updatable = false)
     public long createdAt;
 
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public UserType getType() {
+        return type;
+    }
+
+    public void setType(UserType type) {
+        this.type = type;
+    }
+
+    public long getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(long createdAt) {
+        this.createdAt = createdAt;
+    }
+
     @Override
     public String toString() {
         return "UserEntity [id=" + id + ", type=" + type + ", createdAt=" + createdAt + "]";

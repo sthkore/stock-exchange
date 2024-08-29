@@ -60,8 +60,13 @@ public class MvcController extends LoggerSupport {
                 String email = "user" + i + "@example.com";
                 String name = "User-" + i;
                 String password = "123456" ;
-                if (userService.fetchUserProfileByEmail(email) == null) {
+                UserProfileEntity userProfile = userService.fetchUserProfileByEmail(email);
+                if (userProfile == null) {
                     logger.info("auto create user {} for local dev env...", email);
+                    doSignup(email, name, password);
+                }else {
+                    userService.deleteByUserId(userProfile.getUserId());
+                    logger.info("user have exists,auto create user {} for local dev env...", email);
                     doSignup(email, name, password);
                 }
             }

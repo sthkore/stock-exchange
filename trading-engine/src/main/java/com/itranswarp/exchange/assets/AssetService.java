@@ -123,7 +123,7 @@ public class AssetService extends LoggerSupport {
             return false;
         }
         Asset userAsset = map.get(assetEnum);
-        if(userAsset.frozenNum.compareTo(quantity) < 0){
+        if(userAsset.getFrozen().compareTo(quantity) < 0){
             return false;
         }
         return true;
